@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{6C0CB602-DB8C-4B29-9159-D38E7BFA8C69}</ProjectGuid>
+    <OutputName>Chapter6_2</OutputName>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Chapter6_2</RootNamespace>
+    <PreserveCase>True</PreserveCase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <MFDependencyPaths>copybooks;CopyBooks</MFDependencyPaths>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <MaxError>100</MaxError>
+    <SourceFormat>Variable</SourceFormat>
+    <DefineConstants>DEBUG</DefineConstants>
+    <AdditionalDirectives>Assign(External)</AdditionalDirectives>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <MaxError>100</MaxError>
+    <SourceFormat>Variable</SourceFormat>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Chapter6-2.cbl" />
+    <Compile Include="SubPrograms\DateFormat.cbl" />
+    <Compile Include="SubPrograms\TimeFormat.cbl" />
+    <Compile Include="SubPrograms\Validations.cbl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Report\PayrollReport.dat" />
+    <None Include="CopyBooks\DetailLine.cpy" />
+    <None Include="CopyBooks\Footer.cpy" />
+    <None Include="CopyBooks\HeaderColumns.cpy" />
+    <None Include="CopyBooks\HeaderMain.cpy" />
+    <None Include="CopyBooks\Misc.cpy" />
+    <None Include="CopyBooks\ScreenColors.cpy" />
+    <None Include="CopyBooks\WS_Date.cpy" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Micro Focus\Visual COBOL\v1.0\MicroFocus.COBOL.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
