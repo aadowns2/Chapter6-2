@@ -31,19 +31,28 @@
                
                01  EmployeeRecords.
                    05  EmployeeNumber                      PIC X(5).
+                   05                                      PIC X(5) value spaces.
                    05  EmployeeName                        PIC X(20).
+                   05                                      PIC X(5) value spaces.
                    05  TerritoryNumber                     PIC X(2).
+                   05                                      PIC X(2) value spaces.
                    05  OfficeNumber                        PIC X(2).
+                   05                                      PIC X(5) value spaces.
                    05  AnnualSalary                        PIC 9(1),9(3).9(2).
+                   05                                      PIC X(5) values spaces.
                    05  SocialSecurityNumber                PIC 9(9).
+                   05  SSNumber redefines SocialSecurityNumber.
+                       10  FirstDigits                     PIC X(3).
+                       10  SecondDigits                    PIC X(2).
+                       10  ThirdDigits                     PIC X(4).
+                           
                    
            Screen Section.
                01  HeaderScreen.
                    05  Blank Screen
                        Foreground-color Blue
                        Background-color Cyan.
-                   05  Line 4 Column 25
-                                   value "Welcom To The Agile Payroll Menu".
+                   05  Line 4 Column 25                        value "Welcome To The Agile Payroll Menu".
                01  MainScreen.
                    05  Input-Prompt.
                        10  Line 8 Column 10                    value "Please Enter The Employee Number: ".
@@ -69,8 +78,11 @@
                DISPLAY HeaderScreen
                DISPLAY MainScreen
                ACCEPT MainScreen
-               WRITE EmployeeRecord FROM EmployeeRecords.
-             
+               MOVE SocialSecurityNumber TO SSNumber.
+               MOVE ThirdDigits in SSNumber TO AnnualSalary.
+               MOVE SocialSecurityNumber(4:2) TO AnnualSalary.
+               PERFORM 400-Write-Records.
+               PERFORM 500-Close-Files.
                STOP RUN.
          
  
@@ -84,9 +96,11 @@
            300-Write-Heading.
            
            400-Write-Records.
+               WRITE EmployeeRecord FROM EmployeeRecords.
            
            500-Close-Files.
-           
+               CLOSE PayrollReport.
+               
            600-FormatDate.
            
            700-FormatTime.
